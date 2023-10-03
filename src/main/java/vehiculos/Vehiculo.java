@@ -1,5 +1,7 @@
 package vehiculos;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Vehiculo {
@@ -11,9 +13,10 @@ public class Vehiculo {
 	private int peso;
 	private String traccion;
 	private Fabricante fabricante;
-	private static int CantidadVehiculos;
+	protected static int CantidadVehiculos;
 	private static Map<String, Integer> ventasPorPais = new HashMap<>();
     private static Map<String, Integer> ventasPorFabricante = new HashMap<>();
+    public static List<Fabricante> todosLosFabricantes = new ArrayList<>();
     
 	public static String vehiculosPorTipo() {
         return "Automoviles: " + Automovil.getCantidad() + "\n" +
@@ -31,12 +34,15 @@ public class Vehiculo {
 		this.traccion = traccion;
 		this.fabricante = fabricante;
 		CantidadVehiculos++;
+	    
 		
-		String pais = fabricante.getPais();
+		/*String pais = fabricante.getPais();
         String nombreFabricante = fabricante.getNombre();
 
         ventasPorPais.put(pais, ventasPorPais.getOrDefault(pais, 0) + 1);
-        ventasPorFabricante.put(nombreFabricante, ventasPorFabricante.getOrDefault(nombreFabricante, 0) + 1);
+        ventasPorFabricante.put(nombreFabricante, ventasPorFabricante.getOrDefault(nombreFabricante, 0) + 1);*/
+		
+		todosLosFabricantes.add(fabricante);
 	}
 	
     public static String paisMasVendedor() {
@@ -52,6 +58,7 @@ public class Vehiculo {
 	        .map(Map.Entry::getKey)
 	        .orElse(null);
     }
+    
 }
 	
     // Métodos get
