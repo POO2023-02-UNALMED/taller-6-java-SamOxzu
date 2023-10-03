@@ -13,9 +13,7 @@ public class Vehiculo {
 	private int peso;
 	private String traccion;
 	private Fabricante fabricante;
-	protected static int CantidadVehiculos;
-	private static Map<String, Integer> ventasPorPais = new HashMap<>();
-    private static Map<String, Integer> ventasPorFabricante = new HashMap<>();
+	protected static int cantidadVehiculos;
     public static List<Fabricante> todosLosFabricantes = new ArrayList<>();
     
 	public static String vehiculosPorTipo() {
@@ -33,35 +31,10 @@ public class Vehiculo {
 		this.peso = peso;
 		this.traccion = traccion;
 		this.fabricante = fabricante;
-		CantidadVehiculos++;
-	    
-		
-		/*String pais = fabricante.getPais();
-        String nombreFabricante = fabricante.getNombre();
-
-        ventasPorPais.put(pais, ventasPorPais.getOrDefault(pais, 0) + 1);
-        ventasPorFabricante.put(nombreFabricante, ventasPorFabricante.getOrDefault(nombreFabricante, 0) + 1);*/
-		
+		cantidadVehiculos++;
 		todosLosFabricantes.add(fabricante);
 	}
 	
-    public static String paisMasVendedor() {
-        return ventasPorPais.entrySet().stream()
-        	.max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey)
-            .orElse(null);
-    }
-
-    public static String fabricaMayorVentas() {
-    	return ventasPorFabricante.entrySet().stream()
-	        .max(Map.Entry.comparingByValue())
-	        .map(Map.Entry::getKey)
-	        .orElse(null);
-    }
-    
-}
-	
-    // Métodos get
 	public String getPlaca() {
         return placa;
     }
@@ -95,10 +68,9 @@ public class Vehiculo {
     }
 
     public static int getCantidadVehiculos() {
-        return CantidadVehiculos;
+        return cantidadVehiculos;
     }
 
-    // Métodos set
     public void setPlaca(String placa) {
         this.placa = placa;
     }
@@ -130,5 +102,8 @@ public class Vehiculo {
     public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
     }
-
+    
+    public void setCantidadVehiculos(int cantidadVehiculos) {
+    	this.cantidadVehiculos = cantidadVehiculos;
+    }
 }
