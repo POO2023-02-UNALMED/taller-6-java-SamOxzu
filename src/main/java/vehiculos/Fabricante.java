@@ -1,12 +1,17 @@
 package vehiculos;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fabricante {
 	private String nombre;
 	private Pais pais;
+	private static List<Fabricante> todosLosFabricantes = new ArrayList<>();
+	
 	
 	public Fabricante(String nombre, Pais pais) {
 		this.nombre = nombre;
 		this.pais = pais;
+		todosLosFabricantes.add(this);
 	}
 	
 	public String getNombre() {
@@ -26,7 +31,13 @@ public class Fabricante {
 	}
 	
 	public static Fabricante fabricaMayorVentas() {
-		return Fabricante f = new Fabricante("prueba",Pais p = new Pais("prueba"));
-	}
-	
+		return todosLosFabricantes.stream()
+	            .collect(Collectors.groupingBy(Fabricante::getNombre, Collectors.counting()))
+	            .entrySet().stream()
+	            .max(Map.Entry.comparingByValue())
+	            .map(entry -> todosLosFabricantes.stream()
+	                .filter(fabricante -> fabricante.getNombre().equals(entry.getKey()))
+	                .findFirst().orElse(null))
+	            .orElse(null);
+	    }
 }
