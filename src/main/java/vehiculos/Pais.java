@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Pais {
 	private String nombre;
-	private static List<Pais> todosLosPaises = new ArrayList<>();
+	private static HashMap<Pais, Integer> contador = new HashMap<>();
 	
 	public Pais(String nombre) {
 		this.nombre = nombre;
@@ -19,14 +19,23 @@ public class Pais {
 		this.nombre = nombre;
 	}
 	
+	public static void incrementarContador(Pais pais) {
+		if (contador.containsKey(pais)) {
+			contador.put(pais, contador.get(pais) + 1);
+		} else {
+			contador.put(pais, 1);
+		}
+	}
+	
 	public static Pais paisMasVendedor() {
-		return todosLosPaises.stream()
-	            .collect(Collectors.groupingBy(Pais::getNombre, Collectors.counting()))
-	            .entrySet().stream()
-	            .max(Map.Entry.comparingByValue())
-	            .map(entry -> todosLosPaises.stream()
-	                .filter(pais -> pais.getNombre().equals(entry.getKey()))
-	                .findFirst().orElse(null))
-	            .orElse(null);
+		Pais maxPais = null;
+		int maxCont = 0;
+		for (Pais pais : contador.keySet()) {
+			if (contador.get(pais) > maxCont) {
+				maxPais = pais;
+		        maxCont = contador.get(pais);
+		    }
+		}
+		return maxPais;
 	}
 }
