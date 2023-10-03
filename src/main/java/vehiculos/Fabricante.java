@@ -1,6 +1,7 @@
 package vehiculos;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 public class Fabricante {
 	private String nombre;
@@ -32,7 +33,7 @@ public class Fabricante {
 	public static void incrementarContador(Fabricante fabricante) {
 		if (contador.containsKey(fabricante)) {
 			contador.put(fabricante, contador.get(fabricante) + 1);
-			Pais.incrementarContador(fabricante.getPais()); // Incrementa el contador del país asociado al fabricante
+			Pais.incrementarContador(fabricante.getPais());
 	    } else {
 	    	contador.put(fabricante, 1);
 	    }

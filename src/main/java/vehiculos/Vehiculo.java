@@ -27,7 +27,6 @@ public class Vehiculo {
 		this.traccion = traccion;
 		this.fabricante = fabricante;
 		Fabricante.incrementarContador(fabricante);
-		Pais.incrementarContador(fabricante.getPais());
 		cantidadVehiculos++;
 	}
 	

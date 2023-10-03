@@ -1,6 +1,7 @@
 package vehiculos;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 public class Pais {
 	private String nombre;
@@ -8,7 +9,6 @@ public class Pais {
 	
 	public Pais(String nombre) {
 		this.nombre = nombre;
-		todosLosPaises.add(this);
 	}
 	
 	public String getNombre() {
