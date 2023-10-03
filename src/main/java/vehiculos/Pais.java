@@ -14,4 +14,8 @@ public class Pais {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public static Pais paisMasVendedor() {
+		return Pais p = new Pais("Prueba");
+	}
 }
