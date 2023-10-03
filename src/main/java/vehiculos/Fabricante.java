@@ -1,8 +1,4 @@
 package vehiculos;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Fabricante {
 	private String nombre;
@@ -29,18 +25,4 @@ public class Fabricante {
 		this.pais = pais;
 	}
 	
-	public static Fabricante fabricaMayorVentas() {
-        return Vehiculo.ventasPorFabricante.entrySet().stream()
-            .max(Map.Entry.comparingByValue())
-            .map(entry -> {
-                for (Fabricante fabricante : Vehiculo.todosLosFabricantes) {
-                    if (fabricante.getNombre().equals(entry.getKey())) {
-                        return fabricante;
-                    }
-                }
-                return null;
-            })
-            .orElse(null);
-    }
-}
 }

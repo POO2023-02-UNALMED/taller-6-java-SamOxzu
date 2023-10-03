@@ -1,8 +1,4 @@
 package vehiculos;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Vehiculo {
 	private String placa;
@@ -14,7 +10,6 @@ public class Vehiculo {
 	private String traccion;
 	private Fabricante fabricante;
 	protected static int cantidadVehiculos;
-    public static List<Fabricante> todosLosFabricantes = new ArrayList<>();
     
 	public static String vehiculosPorTipo() {
         return "Automoviles: " + Automovil.getCantidad() + "\n" +
@@ -32,7 +27,6 @@ public class Vehiculo {
 		this.traccion = traccion;
 		this.fabricante = fabricante;
 		cantidadVehiculos++;
-		todosLosFabricantes.add(fabricante);
 	}
 	
 	public String getPlaca() {
